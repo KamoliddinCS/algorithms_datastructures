@@ -28,13 +28,29 @@ def roman_to_int(s: str) -> int:
     #
     # return new_num
 
-    roman_numerals = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
-    result = 0
-    for i, c in enumerate(s):
-        if (i+1) == len(s) or roman_numerals[c] >= roman_numerals[s[i+1]]:
-            result += roman_numerals[c]
+    # roman_numerals = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+    # result = 0
+    # for i, c in enumerate(s):
+    #     if (i+1) == len(s) or roman_numerals[c] >= roman_numerals[s[i+1]]:
+    #         result += roman_numerals[c]
+    #     else:
+    #         result -= roman_numerals[c]
+    # return result
+
+    roman = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+    n = len(s)
+    result = roman[s[n - 1]]
+    print(result)
+
+    for i in range(n - 2, -1, -1):
+        if roman[s[i]] < roman[s[i + 1]]:
+            result = result - roman[s[i]]
+            print(result)
         else:
-            result -= roman_numerals[c]
+            result = result + roman[s[i]]
+            print(result)
+
     return result
 
 
