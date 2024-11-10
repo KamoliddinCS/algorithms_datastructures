@@ -68,4 +68,18 @@ example_set = ["a", "b", "c"] # no duplicates
 # TOTAL: 2N +1 STEPS IN THE WORST CASE
 
 
+def ordered_list(nums: list, num) -> list:
+    # [1, 2, 4, 5]
+
+    for i in nums:
+        if num > i:
+            continue
+        else:
+            nums.insert(nums.index(i), num)
+            break
+
+    return nums
+
+
+print(ordered_list([1, 2, 4, 5], 3))
 
